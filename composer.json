@@ -1,0 +1,30 @@
+{
+	"name": "omnipay/paymill",
+	"type": "library",
+	"description": "Paymill driver for the Omnipay payment processing library",
+	"keywords": [
+		"gateway",
+		"merchant",
+		"omnipay",
+		"pay",
+		"payment",
+		"paymill"
+	],
+	"authors": [
+		{
+			"name": "Bram Devries",
+			"email": "bramdevries93@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Omnipay\\Paymill\\": "src"
+		}
+	},
+	"require": {
+		"omnipay/common": "~2.0"
+	},
+	"require-dev": {
+		"omnipay/tests": "~2.0"
+	}
+}
