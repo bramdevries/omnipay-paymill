@@ -1,5 +1,5 @@
 {
-	"name": "omnipay/paymill",
+	"name": "bramdevries/omnipay-paymill",
 	"type": "library",
 	"description": "Paymill driver for the Omnipay payment processing library",
 	"keywords": [
