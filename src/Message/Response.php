@@ -22,4 +22,15 @@ class Response extends AbstractResponse
 		return !isset($this->getData()['error']);
 	}
 
+	public function getTransactionReference()
+	{
+		if (isset($this->getData()['data']['id'])) {
+			return $this->getData()['data']['id'];
+		}
+	}
+
+	public function getMessage()
+	{
+		return isset($this->getData()['error']) ? $this->getData()['error'] : null;
+	}
 }
