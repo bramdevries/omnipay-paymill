@@ -2,9 +2,14 @@
 
 namespace Omnipay\Paymill\Message;
 
-
 use Omnipay\Common\Message\ResponseInterface;
 
+/**
+ * Class AbstractRequest
+ *
+ * @author Bram Devries <bram@madewithlove.be>
+ * @package Omnipay\Paymill\Message
+ */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
 	/**
@@ -29,11 +34,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 		return $this->setParameter('apiKey', $value);
 	}
 
+	/**
+	 * Get the HTTP method to use for this request
+	 *
+	 * @return string
+	 */
 	public function getHttpMethod()
 	{
 		return 'POST';
 	}
 
+	/**
+	 * Get the endpoint for this request
+	 *
+	 * @return mixed
+	 */
 	abstract public function getEndpoint();
 
 	/**
@@ -61,8 +76,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 			$data
 		);
 
-		$httpResponse =  $httpRequest
-			->setHeader('Authorization', 'Basic '.base64_encode($this->getApiKey().':'))
+		$httpResponse = $httpRequest
+			->setHeader('Authorization', 'Basic ' . base64_encode($this->getApiKey() . ':'))
 			->send();
 
 		return $this->response = new Response($this, $httpResponse->json());

@@ -2,16 +2,19 @@
 
 namespace Omnipay\Paymill\Message;
 
-use Omnipay\Common\Message\ResponseInterface;
-
+/**
+ * Class AuthorizeRequest
+ *
+ * @author Bram Devries <bram@madewithlove.be>
+ * @package Omnipay\Paymill\Message
+ */
 class AuthorizeRequest extends AbstractRequest
 {
 
 	/**
-	 * Get the raw data array for this message. The format of this varies from gateway to
-	 * gateway, but will usually be either an associative array, or a SimpleXMLElement.
+	 * Get the data for this request
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public function getData()
 	{
@@ -22,7 +25,6 @@ class AuthorizeRequest extends AbstractRequest
 		$data['amount'] = $this->getAmountInteger();
 		$data['currency'] = strtolower($this->getCurrency());
 		$data['description'] = $this->getDescription();
-		$data['capture'] = false;
 
 		$data['token'] = $this->getToken();
 
@@ -31,7 +33,7 @@ class AuthorizeRequest extends AbstractRequest
 
 
 	/**
-	 * Get the endpoint to Authorize
+	 * The endpoint for this request
 	 *
 	 * @return string
 	 */

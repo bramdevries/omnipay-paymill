@@ -2,15 +2,18 @@
 
 namespace Omnipay\Paymill\Message;
 
-use Omnipay\Paymill\Message\AbstractRequest;
-
+/**
+ * Class CaptureRequest
+ *
+ * @author Bram Devries <bram@madewithlove.be>
+ * @package Omnipay\Paymill\Message
+ */
 class CaptureRequest extends AbstractRequest
 {
 	/**
-	 * Get the raw data array for this message. The format of this varies from gateway to
-	 * gateway, but will usually be either an associative array, or a SimpleXMLElement.
+	 * Get the data for this request
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public function getData()
 	{
@@ -26,6 +29,11 @@ class CaptureRequest extends AbstractRequest
 		return $data;
 	}
 
+	/**
+	 * The endpoint for this request
+	 *
+	 * @return string
+	 */
 	public function getEndpoint()
 	{
 		return $this->endpoint . '/transactions';
