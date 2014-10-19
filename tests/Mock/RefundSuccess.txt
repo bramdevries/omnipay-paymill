@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 15 Feb 2013 18:25:28 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 995
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Allow-Credentials: true
+Access-Control-Max-Age: 300
+
+{
+    "data": {
+        "id" : "refund_70392dc6a734a8233130",
+		"amount" : "1200",
+		"status" : "refunded",
+		"description" : null,
+		"livemode" : false,
+		"created_at" : 1365154751,
+		"updated_at" : 1365154751,
+		"response_code" : 20000,
+		"transaction" : "<Object>",
+		"app_id" :  null
+    },
+    "mode": "test"
+}

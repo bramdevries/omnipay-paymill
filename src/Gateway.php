@@ -76,4 +76,13 @@ class Gateway extends AbstractGateway
 		return $this->createRequest('\Omnipay\Paymill\Message\PurchaseRequest', $parameters);
 	}
 
+	/**
+	 * @param array $parameters
+	 * @return mixed
+	 */
+	public function refund(array $parameters = array())
+	{
+		return $this->createRequest('\Omnipay\Paymill\Message\RefundRequest', $parameters);
+	}
+
 }
