@@ -19,18 +19,28 @@ class Response extends AbstractResponse
 	 */
 	public function isSuccessful()
 	{
-		return !isset($this->getData()['error']);
+		return !isset($this->data['error']);
 	}
 
+	/**
+	 * Get the id of the resource
+	 *
+	 * @return mixed
+	 */
 	public function getTransactionReference()
 	{
-		if (isset($this->getData()['data']['id'])) {
-			return $this->getData()['data']['id'];
+		if (isset($this->data['id'])) {
+			return $this->data['id'];
 		}
 	}
 
+	/**
+	 * Get the error message
+	 *
+	 * @return null
+	 */
 	public function getMessage()
 	{
-		return isset($this->getData()['error']) ? $this->getData()['error'] : null;
+		return !$this->isSuccessful() ? $this->data['error'] : null;
 	}
 }
