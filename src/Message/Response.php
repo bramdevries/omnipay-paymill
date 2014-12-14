@@ -3,6 +3,7 @@
 namespace Omnipay\Paymill\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
+use Omnipay\Common\Message\RequestInterface;
 
 /**
  * Class Response
@@ -29,8 +30,8 @@ class Response extends AbstractResponse
 	 */
 	public function getTransactionReference()
 	{
-		if (isset($this->data['id'])) {
-			return $this->data['id'];
+		if (isset($this->getData()['id'])) {
+			return $this->getData()['id'];
 		}
 	}
 
@@ -42,5 +43,13 @@ class Response extends AbstractResponse
 	public function getMessage()
 	{
 		return !$this->isSuccessful() ? $this->data['error'] : null;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getData()
+	{
+		return isset($this->data['data']) ? $this->data['data'] : $this->data;
 	}
 }
