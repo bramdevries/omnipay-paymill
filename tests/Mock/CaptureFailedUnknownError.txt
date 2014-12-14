@@ -1,0 +1,34 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 15 Feb 2013 18:25:28 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 995
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Allow-Credentials: true
+Access-Control-Max-Age: 300
+
+{
+    "data" : {
+        "id" : "tran_1f42e10cf14301067332",
+        "amount" : "4200",
+        "origin_amount" : 4200,
+        "status" : "failed",
+        "description" : null,
+        "livemode" : false,
+        "refunds" : null,
+        "currency" : "EUR",
+        "created_at" : 1349946151,
+        "updated_at" : 1349946151,
+        "response_code" : 502050,
+        "short_id" : "0000.1212.3434",
+        "is_fraud" : false,
+        "invoices" : [],
+        "payment" : "<Object>",
+        "client" : "<Object>",
+        "preauthorization" : null,
+        "fees" : [],
+        "app_id" : null
+    },
+    "mode" : "test"
+}

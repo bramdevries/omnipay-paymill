@@ -3,6 +3,8 @@
 ## [1.0.1] - 2014-12-14
 ### Changed
 - `$response->getData()` should now return the nested `data` array instead of the entire response (when available)
+- `$response->isSuccessful()` will now fail when it detects that a transaction has failed
+- `$response->getMessage` will now return an error response if a transaction has failed
 
 ## [1.0.0] - 2014-10-21
 ### Added

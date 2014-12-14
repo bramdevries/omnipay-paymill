@@ -59,4 +59,26 @@ class CaptureRequestTest extends TestCase
 		$this->assertNull($response->getTransactionReference());
 		$this->assertSame('Preauthorization has already been used', $response->getMessage());
 	}
+
+	public function testSendFailed()
+	{
+		$this->setMockHttpResponse('CaptureFailed.txt');
+		$response = $this->request->send();
+
+		$this->assertFalse($response->isSuccessful());
+		$this->assertFalse($response->isRedirect());
+		$this->assertEquals('RESPONSE_BACKEND_TIMEOUT_ACQUIRER', $response->getMessage());
+		$this->assertSame('tran_1f42e10cf14301067332', $response->getTransactionReference());
+	}
+
+	public function testSendFailedUnknown()
+	{
+		$this->setMockHttpResponse('CaptureFailedUnknownError.txt');
+		$response = $this->request->send();
+
+		$this->assertFalse($response->isSuccessful());
+		$this->assertFalse($response->isRedirect());
+		$this->assertEquals('UNKNOWN_ERROR', $response->getMessage());
+		$this->assertSame('tran_1f42e10cf14301067332', $response->getTransactionReference());
+	}
 } 
