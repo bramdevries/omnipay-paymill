@@ -19,6 +19,9 @@ class Response extends AbstractResponse
 	 */
 	public function isSuccessful()
 	{
+        if (isset($this->data['data'])) {
+            return in_array($this->data['data']['status'], array('closed', 'refunded'));
+        }
 		return !isset($this->data['error']);
 	}
 
@@ -29,8 +32,8 @@ class Response extends AbstractResponse
 	 */
 	public function getTransactionReference()
 	{
-		if (isset($this->data['id'])) {
-			return $this->data['id'];
+		if (isset($this->data['data']['id'])) {
+			return $this->data['data']['id'];
 		}
 	}
 
@@ -39,8 +42,24 @@ class Response extends AbstractResponse
 	 *
 	 * @return null
 	 */
-	public function getMessage()
-	{
-		return !$this->isSuccessful() ? $this->data['error'] : null;
-	}
+    public function getMessage()
+    {
+        if (isset($this->data['error'])) {
+            return $this->data['error'];
+        }
+        if (!$this->isSuccessful() && isset($this->data['data']['response_code'])) {
+            return $this->data['data']['response_code'];
+        }
+    }
+
+    /**
+     * Gets the data from the request
+     *
+     * @return mixed
+     */
+    public function getData()
+    {
+        if (isset($this->data['data'])) return $this->data['data'];
+        return $this->data;
+    }
 }
